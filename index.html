@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PUBG Mobile</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 0;
+}
+header {
+    background-color: #1d1f23;
+    color: white;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+header img {
+    height: 50px;
+    margin-right: 10px;
+}
+header h1 {
+    font-size: 24px;
+    font-weight: bold;
+}
+.video-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    position: relative;
+}
+video {
+    width: 100%;
+    border-radius: 10px;
+}
+.controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+button:hover {
+    transform: scale(1.2);
+}
+.like {
+    background-color: #1877f2;
+    color: white;
+}
+.share {
+    background-color: #42b72a;
+    color: white;
+}
+.views {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255,255,255,0.7);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <img src="unnamed.webp" alt="Logo">
+    <h1>PUBG Mobile</h1>
+</header>
+
+<div class="video-container" id="video1-container">
+    <div class="views">0 Views</div>
+    <video id="video1" controls>
+        <!-- سيتم إضافة الفيديوهات بعد النشر -->
+    </video>
+    <div class="controls">
+        <button class="like" onclick="likeVideo('video1')">👍 0</button>
+        <button class="share" onclick="shareVideo('video1')">↗️ Share</button>
+        <button onclick="rotateVideo('video1')">⟳ Rotate</button>
+        <button onclick="toggleMute('video1')">🎤</button>
+    </div>
+</div>
+
+<div class="video-container" id="video2-container">
+    <div class="views">0 Views</div>
+    <video id="video2" controls></video>
+    <div class="controls">
+        <button class="like" onclick="likeVideo('video2')">👍 0</button>
+        <button class="share" onclick="shareVideo('video2')">↗️ Share</button>
+        <button onclick="rotateVideo('video2')">⟳ Rotate</button>
+        <button onclick="toggleMute('video2')">🎤</button>
+    </div>
+</div>
+
+<div class="video-container" id="video3-container">
+    <div class="views">0 Views</div>
+    <video id="video3" controls></video>
+    <div class="controls">
+        <button class="like" onclick="likeVideo('video3')">👍 0</button>
+        <button class="share" onclick="shareVideo('video3')">↗️ Share</button>
+        <button onclick="rotateVideo('video3')">⟳ Rotate</button>
+        <button onclick="toggleMute('video3')">🎤</button>
+    </div>
+</div>
+
+<script>
+function rotateVideo(videoId) {
+    const vid = document.getElementById(videoId);
+    vid.style.transform = vid.style.transform === "rotate(90deg)" ? "rotate(0deg)" : "rotate(90deg)";
+    vid.style.transition = "transform 0.5s";
+}
+
+function toggleMute(videoId) {
+    const vid = document.getElementById(videoId);
+    vid.muted = !vid.muted;
+}
+
+function likeVideo(videoId) {
+    const btn = document.getElementById(videoId).parentElement.querySelector('.like');
+    let current = parseInt(btn.innerText.replace(/[^0-9]/g, ''));
+    current += 1;
+    btn.innerText = "👍 " + current;
+}
+
+function shareVideo(videoId) {
+    alert("Share options: WhatsApp, Telegram, TikTok");
+}
+</script>
+
+</body>
+</html>
